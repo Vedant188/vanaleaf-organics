@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moringa Powder - Vanaleaf Organics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-leaf"></i>
+                        <span>Vanaleaf Organics</span>
+                    </a>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="product.html" class="active">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="cart-icon-wrapper">
+                        <a href="#" id="cartToggle">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-grid">
+                <div class="product-image-section">
+                    <div class="main-image">
+                        <div class="image-placeholder large">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-info-section">
+                    <h1>Premium Organic Moringa Powder</h1>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-count">(127 reviews)</span>
+                    </div>
+                    <p class="product-description">
+                        Discover the power of nature with our premium organic moringa powder. Sourced from the finest moringa trees and carefully processed to preserve all the natural goodness. Each serving delivers a powerful boost of vitamins, minerals, and antioxidants to support your health and wellness journey.
+                    </p>
+
+                    <div class="product-benefits">
+                        <h3>Key Benefits:</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Rich in vitamins A, C, and E</li>
+                            <li><i class="fas fa-check"></i> High in calcium and potassium</li>
+                            <li><i class="fas fa-check"></i> Contains all 9 essential amino acids</li>
+                            <li><i class="fas fa-check"></i> Powerful antioxidant properties</li>
+                            <li><i class="fas fa-check"></i> Supports immune system health</li>
+                            <li><i class="fas fa-check"></i> Boosts energy naturally</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label for="size">Select Size:</label>
+                            <select id="size" class="size-select">
+                                <option value="100g" data-price="1499">100g - ₹1,499</option>
+                                <option value="250g" data-price="2999">250g - ₹2,999</option>
+                                <option value="500g" data-price="5299">500g - ₹5,299</option>
+                                <option value="1kg" data-price="8999">1kg - ₹8,999</option>
+                            </select>
+                        </div>
+                        <div class="option-group">
+                            <label for="quantity">Quantity:</label>
+                            <div class="quantity-selector">
+                                <button type="button" class="qty-btn" id="decreaseQty">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button type="button" class="qty-btn" id="increaseQty">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-price">
+                        <span class="price" id="productPrice">₹1,499</span>
+                    </div>
+
+                    <button class="btn btn-primary btn-large" id="addToCartBtn">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Free shipping on orders over ₹4,000</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-undo"></i>
+                            <span>30-day money-back guarantee</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>Certified organic & non-GMO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Tabs -->
+    <section class="product-tabs">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="description">Description</button>
+                <button class="tab-btn" data-tab="usage">How to Use</button>
+                <button class="tab-btn" data-tab="ingredients">Ingredients</button>
+                <button class="tab-btn" data-tab="reviews">Reviews</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-panel active" id="description">
+                    <h3>Product Description</h3>
+                    <p>Our Premium Organic Moringa Powder is made from carefully selected moringa leaves, harvested at peak freshness and dried using a gentle process that preserves the plant's incredible nutritional profile.</p>
+                    <p>Moringa, often called the "miracle tree," has been used for centuries in traditional medicine. The leaves are among the most nutrient-dense parts of the plant, containing more vitamin C than oranges, more calcium than milk, and more iron than spinach.</p>
+                    <p>Each batch is tested for purity and quality, ensuring you receive only the finest moringa powder available. Our product is certified organic, non-GMO, and free from additives, preservatives, and artificial colors.</p>
+                </div>
+                <div class="tab-panel" id="usage">
+                    <h3>How to Use</h3>
+                    <p><strong>Recommended Serving:</strong> 1-2 teaspoons per day</p>
+                    <ul>
+                        <li><strong>Smoothies:</strong> Add 1-2 teaspoons to your favorite smoothie recipe</li>
+                        <li><strong>Tea:</strong> Mix with hot water and honey for a nutritious tea</li>
+                        <li><strong>Juices:</strong> Blend into fresh fruit or vegetable juices</li>
+                        <li><strong>Cooking:</strong> Sprinkle over salads, soups, or pasta dishes</li>
+                        <li><strong>Baking:</strong> Add to energy balls, muffins, or bread</li>
+                    </ul>
+                    <p><em>Note: Start with a smaller amount and gradually increase to allow your body to adjust.</em></p>
+                </div>
+                <div class="tab-panel" id="ingredients">
+                    <h3>Ingredients</h3>
+                    <p><strong>100% Organic Moringa Oleifera Leaf Powder</strong></p>
+                    <p>That's it. No fillers, no additives, no preservatives. Just pure, organic moringa powder.</p>
+                    <h4>Nutritional Information (per 10g serving):</h4>
+                    <ul>
+                        <li>Calories: 37</li>
+                        <li>Protein: 3g</li>
+                        <li>Fiber: 2g</li>
+                        <li>Vitamin A: 378 mcg (42% DV)</li>
+                        <li>Vitamin C: 5.1mg (6% DV)</li>
+                        <li>Calcium: 185mg (14% DV)</li>
+                        <li>Iron: 4mg (22% DV)</li>
+                        <li>Potassium: 337mg (7% DV)</li>
+                    </ul>
+                </div>
+                <div class="tab-panel" id="reviews">
+                    <h3>Customer Reviews</h3>
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="review-date">May 15, 2026</span>
+                            </div>
+                            <h4>Amazing product!</h4>
+                            <p>"I've been using this moringa powder for two months now, and I can feel the difference in my energy levels. The quality is exceptional, and it mixes well in my morning smoothie."</p>
+                            <span class="reviewer">- Sarah M.</span>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="review-date">May 10, 2026</span>
+                            </div>
+                            <h4>Highest quality</h4>
+                            <p>"I've tried several brands of moringa powder, and this is by far the best. The color is vibrant green, and it tastes fresh. Will definitely reorder."</p>
+                            <span class="reviewer">- John D.</span>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="review-date">May 5, 2026</span>
+                            </div>
+                            <h4>Love it!</h4>
+                            <p>"Great product! I add it to my tea every morning. It's helped boost my immunity, and I haven't been sick since I started using it."</p>
+                            <span class="reviewer">- Emily R.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Vanaleaf Organics</h3>
+                    <p>Your trusted source for premium organic moringa powder and natural wellness products.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@vanaleaforganics.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vanaleaf Organics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkoutForm">
+                <div class="form-section">
+                    <h3>Shipping Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <input type="text" id="address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zipCode">Zip Code *</label>
+                            <input type="text" id="zipCode" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3>Payment Information</h3>
+                    <div class="form-group">
+                        <label for="cardName">Name on Card *</label>
+                        <input type="text" id="cardName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number *</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry">Expiry Date *</label>
+                            <input type="text" id="expiry" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV *</label>
+                            <input type="text" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="orderItems"></div>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span id="shipping">₹100</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="finalTotal">₹0</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/cart.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
