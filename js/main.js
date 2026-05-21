@@ -103,7 +103,7 @@ function createBackToTopButton() {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background-color: var(--primary-color);
+        background: linear-gradient(135deg, #16a34a, #22c55e);
         color: white;
         border: none;
         cursor: pointer;
@@ -111,7 +111,7 @@ function createBackToTopButton() {
         align-items: center;
         justify-content: center;
         font-size: 1.2rem;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        box-shadow: 0 8px 20px rgba(22, 163, 74, 0.3);
         z-index: 1000;
         transition: all 0.3s ease;
     `;
