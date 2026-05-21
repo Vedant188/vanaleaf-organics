@@ -64,7 +64,7 @@ class ShoppingCart {
 
         if (this.items.length === 0) {
             cartItemsContainer.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
-            cartTotalElement.textContent = '$0.00';
+            cartTotalElement.textContent = '₹0';
             return;
         }
 
@@ -85,7 +85,6 @@ class ShoppingCart {
     }
 
     showNotification(message) {
-        // Create notification element
         const notification = document.createElement('div');
         notification.style.cssText = `
             position: fixed;
@@ -139,113 +138,58 @@ class ShoppingCart {
             overlay.addEventListener('click', () => {
                 cartSidebar.classList.remove('active');
                 overlay.classList.remove('active');
-                const modal = document.getElementById('checkoutModal');
-                if (modal) {
-                    modal.classList.remove('active');
-                }
             });
         }
 
-        // Checkout button
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        if (checkoutBtn) {
-            checkoutBtn.addEventListener('click', () => {
+        // WhatsApp order button
+        const whatsappBtn = document.getElementById('orderWhatsappBtn');
+        if (whatsappBtn) {
+            whatsappBtn.addEventListener('click', () => {
                 if (this.items.length === 0) {
                     alert('Your cart is empty!');
                     return;
                 }
-                this.openCheckoutModal();
+                this.orderViaWhatsApp();
+            });
+        }
+
+        // COD/UPI button
+        const codBtn = document.getElementById('orderCodBtn');
+        if (codBtn) {
+            codBtn.addEventListener('click', () => {
+                if (this.items.length === 0) {
+                    alert('Your cart is empty!');
+                    return;
+                }
+                this.orderViaWhatsApp(true);
             });
         }
     }
 
-    openCheckoutModal() {
-        const modal = document.getElementById('checkoutModal');
-        const overlay = document.getElementById('overlay');
-
-        if (modal) {
-            modal.classList.add('active');
-            overlay.classList.add('active');
-            this.renderOrderSummary();
-        }
-
-        // Close modal handlers
-        const closeModal = document.getElementById('closeModal');
-        if (closeModal) {
-            closeModal.addEventListener('click', () => {
-                modal.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        }
-
-        // Form submission
-        const checkoutForm = document.getElementById('checkoutForm');
-        if (checkoutForm) {
-            checkoutForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                this.processOrder();
-            });
-        }
-    }
-
-    renderOrderSummary() {
-        const orderItemsContainer = document.getElementById('orderItems');
-        const subtotalElement = document.getElementById('subtotal');
-        const shippingElement = document.getElementById('shipping');
-        const finalTotalElement = document.getElementById('finalTotal');
-
-        if (!orderItemsContainer) return;
-
-        orderItemsContainer.innerHTML = this.items.map(item => `
-            <div class="order-item">
-                <span>${item.name} (${item.size}) × ${item.quantity}</span>
-                <span>₹${Math.round(item.price * item.quantity)}</span>
-            </div>
-        `).join('');
-
+    orderViaWhatsApp(isCod = false) {
         const subtotal = this.getTotal();
         const shipping = subtotal >= 4000 ? 0 : 100;
         const total = subtotal + shipping;
 
-        subtotalElement.textContent = `₹${Math.round(subtotal)}`;
-        shippingElement.textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
-        finalTotalElement.textContent = `₹${Math.round(total)}`;
-    }
+        let message = `Namaste! I'd like to place an order from Vanaleaf Organics:\n\n`;
 
-    processOrder() {
-        const formData = {
-            firstName: document.getElementById('firstName').value,
-            lastName: document.getElementById('lastName').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            address: document.getElementById('address').value,
-            city: document.getElementById('city').value,
-            zipCode: document.getElementById('zipCode').value,
-            items: this.items,
-            total: this.getTotal() + (this.getTotal() >= 4000 ? 0 : 100)
-        };
+        this.items.forEach(item => {
+            const itemTotal = Math.round(item.price * item.quantity);
+            message += `• ${item.name} (${item.size}) × ${item.quantity} — ₹${itemTotal.toLocaleString('en-IN')}\n`;
+        });
 
-        // In a real application, you would send this to a server
-        console.log('Order submitted:', formData);
+        message += `\nSubtotal: ₹${Math.round(subtotal).toLocaleString('en-IN')}`;
+        message += `\nShipping: ${shipping === 0 ? 'FREE' : '₹' + shipping}`;
+        message += `\nTotal: ₹${Math.round(total).toLocaleString('en-IN')}`;
 
-        // Show success message
-        const modalContent = document.querySelector('.modal-content');
-        modalContent.innerHTML = `
-            <div class="success-message">
-                <div class="success-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <h2>Order Placed Successfully!</h2>
-                <p>Thank you for your purchase. We've sent a confirmation email to ${formData.email}</p>
-                <p>Order Total: ₹${Math.round(formData.total)}</p>
-                <button class="btn btn-primary" onclick="location.reload()">Continue Shopping</button>
-            </div>
-        `;
+        if (isCod) {
+            message += `\n\nI'd prefer COD / UPI payment.`;
+        }
 
-        // Clear cart
-        this.items = [];
-        this.saveCart();
-        this.updateCartCount();
+        message += `\n\nPlease confirm availability and payment details. 🌿`;
+
+        const encoded = encodeURIComponent(message);
+        window.open(`https://wa.me/916299903014?text=${encoded}`, '_blank');
     }
 
     clearCart() {

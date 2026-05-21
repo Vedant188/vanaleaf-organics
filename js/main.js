@@ -92,58 +92,6 @@ function validatePhone(phone) {
     return re.test(phone);
 }
 
-// Card number formatting
-function formatCardNumber(value) {
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    const matches = v.match(/\d{4,16}/g);
-    const match = (matches && matches[0]) || '';
-    const parts = [];
-
-    for (let i = 0, len = match.length; i < len; i += 4) {
-        parts.push(match.substring(i, i + 4));
-    }
-
-    if (parts.length) {
-        return parts.join(' ');
-    } else {
-        return value;
-    }
-}
-
-// Expiry date formatting
-function formatExpiry(value) {
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    if (v.length >= 2) {
-        return v.slice(0, 2) + '/' + v.slice(2, 4);
-    }
-    return v;
-}
-
-// Add input formatters
-document.addEventListener('DOMContentLoaded', function() {
-    const cardNumberInput = document.getElementById('cardNumber');
-    const expiryInput = document.getElementById('expiry');
-    const cvvInput = document.getElementById('cvv');
-
-    if (cardNumberInput) {
-        cardNumberInput.addEventListener('input', function(e) {
-            e.target.value = formatCardNumber(e.target.value);
-        });
-    }
-
-    if (expiryInput) {
-        expiryInput.addEventListener('input', function(e) {
-            e.target.value = formatExpiry(e.target.value);
-        });
-    }
-
-    if (cvvInput) {
-        cvvInput.addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 4);
-        });
-    }
-});
-
 // Back to top button (optional enhancement)
 function createBackToTopButton() {
     const button = document.createElement('button');
