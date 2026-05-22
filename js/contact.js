@@ -25,39 +25,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Show loading state
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            // Format WhatsApp message with styling
+            const whatsappMessage =
+                `*${subject.toUpperCase()}*\n\n` +
+                `_Name:_ \`\`\`${name}\`\`\`\n` +
+                `_Email:_ \`\`\`${email}\`\`\`\n\n` +
+                `*Message:*\n${message}`;
 
-            // Simulate form submission (in a real app, this would send to a server)
-            setTimeout(() => {
-                // Create form data object
-                const formData = {
-                    name: name,
-                    email: email,
-                    subject: subject,
-                    message: message,
-                    timestamp: new Date().toISOString()
-                };
+            const whatsappUrl = `https://wa.me/916299903014?text=${encodeURIComponent(whatsappMessage)}`;
 
-                // Log form data (in production, this would be sent to a server)
-                console.log('Contact form submitted:', formData);
+            // Send WhatsApp message silently via hidden iframe/link
+            const link = document.createElement('a');
+            link.href = whatsappUrl;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
-                // Show success message
-                showFormMessage('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
+            // Show success message
+            showFormMessage('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
 
-                // Reset form
-                contactForm.reset();
-
-                // Reset button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-
-                // Scroll to message
-                formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 1500);
+            // Reset form
+            contactForm.reset();
         });
     }
 
